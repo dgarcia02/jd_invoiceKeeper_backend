@@ -1,61 +1,64 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
 // Schema
-const invoiceSchema = new mongoose.Schema(
-    {
-        invoiceNumber: Number,
-        customer: {
-            name: String, 
-            from: String,
-            phone: Number
+const invoiceSchema = new Schema({
+    invoiceNumber: { type: Number, required: true },
+    customer: {
+        name: { type: String, required: true }, 
+        location: {
+            city: String,
+            state: Number
         },
-        date: Date,
-        truckInfo: {
-            truckNumber: Number,
-            make: String,
-            engine: String
+        phone: Number
+    },
+    date: { type: Date, required: true},
+    truckInfo: {
+        truckNumber: { type: Number, required: true },
+        make: String,
+        engine: String
+    },
+    parts: {
+        items: [
+            {
+                qty: Number,
+                description: String,
+                price: Number,
+                amount: Number,
+            }
+        ],
+        totalParts: Number
+    },
+    labor: {
+        items: [
+            {
+                itemNumber: Number,
+                description: String,
+                amount: Number
+            }    
+        ],
+        totalLabor: Number
+    },
+    miscellaneous: {
+        items: {
+            machineShop: Number,
+            towService: Number,
+            roadService: Number,
+            computerProgram: Number,
+            diagnostic: Number,
+            shopMaterials: Number,
+            afterHours: Number   
         },
-        parts: {
-            items: [
-                {
-                    qty: Number,
-                    description: String,
-                    price: Number,
-                    amount: Number,
-                }
-            ],
-            totalParts: Number
-        },
-        labor: {
-            items: [
-                {
-                    itemNumber: Number,
-                    description: String,
-                    amount: Number
-                }
-            ],
-            totalLabor: Number
-        },
-        miscellaneous: {
-            items: {
-                machineShop: Number,
-                towService: Number,
-                roadService: Number,
-                computerProgram: Number,
-                diagnostic: Number,
-                shopMaterials: Number,
-                afterHours: Number   
-            },
-            totalMiscellaneous: Number
-        },
-        notes: String,
-        invoiceAmount: {
-            tax: Number,
-            grandTotal: Number
-        }
+        totalMiscellaneous: Number
+    },
+    notes: String,
+    invoiceAmount: {
+        tax: Number,
+        grandTotal: Number
     }
-)
+})
 
-const Invoices = mongoose.model('Invoice', invoiceSchema);
+// sets up collection in database
+const Invoice = mongoose.model('Invoice', invoiceSchema);
 
-module.exports = Invoices;
+module.exports = Invoice;
