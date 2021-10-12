@@ -32,37 +32,41 @@ router.get('/seed', (req, res) => {
                 },
                 parts: {
                     items: [
-                            {
-                                qty: 1,
-                                description: 'hub assembly',
-                                price: 595,
-                                amount: 595,
-                            }
-                        ],
-                    totalParts: 595
+                        {
+                            qty: 1,
+                            description: 'hub assembly',
+                            price: 85,
+                            amount: 85,
+                        }
+                    ],
+                    totalParts: 85
                 },
                 labor: {
-                    itemNumber: Number,
-                    description: String,
-                    amount: Number,
-                    totalLabor: Number
+                    items: [
+                        {
+                            itemNumber: 1,
+                            description: 'change hub housing & fan clutch assembly & belt',
+                            amount: 480
+                        }
+                    ],
+                    totalLabor: 480
                 },
                 miscellaneous: {
                     items: {
-                        machineShop: Number,
-                        towService: Number,
-                        roadService: Number,
-                        computerProgram: Number,
-                        diagnostic: Number,
-                        shopMaterials: Number,
-                        afterHours: Number   
+                        machineShop: 0,
+                        towService: 500,
+                        roadService: 50,
+                        computerProgram: 0,
+                        diagnostic: 0,
+                        shopMaterials: 25,
+                        afterHours: 0   
                     },
-                    totalMiscellaneous: Number
+                    totalMiscellaneous: 575
                 },
-                notes: String,
+                notes: '',
                 invoiceAmount: {
-                    tax: Number,
-                    grandTotal: Number
+                    tax: 100,
+                    grandTotal: 2678
                 }
             }
         ]
