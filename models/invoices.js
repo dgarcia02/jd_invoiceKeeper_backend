@@ -15,19 +15,23 @@ const invoiceSchema = new mongoose.Schema(
             make: String,
             engine: String
         },
-        parts: {
-            qty: Number,
-            description: String,
-            price: Number,
-            amount: Number,
-            totalParts: Number
-        },
-        labor: {
-            itemNumber: Number,
-            description: String,
-            amount: Number,
-            totalLabor: Number
-        },
+        parts: [
+            {
+                qty: Number,
+                description: String,
+                price: Number,
+                amount: Number,
+                totalParts: Number
+            }
+        ],
+        labor: [
+            {
+                itemNumber: Number,
+                description: String,
+                amount: Number,
+                totalLabor: Number
+            }
+        ],
         miscellaneous: {
             items: {
                 machineShop: Number,
