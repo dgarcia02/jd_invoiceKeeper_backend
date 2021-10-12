@@ -30,15 +30,17 @@ router.get('/seed', (req, res) => {
                     make: 'Freightliner',
                     engine: 'DD-15'
                 },
-                parts: [
-                    {
-                        qty: 1,
-                        description: String,
-                        price: Number,
-                        amount: Number,
-                        totalParts: Number
-                    }
-                ],
+                parts: {
+                    items: [
+                            {
+                                qty: 1,
+                                description: 'hub assembly',
+                                price: 595,
+                                amount: 595,
+                            }
+                        ],
+                    totalParts: 595
+                },
                 labor: {
                     itemNumber: Number,
                     description: String,
