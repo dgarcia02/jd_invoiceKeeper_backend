@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Schema
 const invoiceSchema = new Schema({
-    invoiceNumber: { type: Number, required: true },
+    invoiceNumber: { type: Number, required: true, unique: true },
     customer: {
         name: { type: String, required: true }, 
         location: {
@@ -56,7 +56,7 @@ const invoiceSchema = new Schema({
         tax: Number,
         grandTotal: Number
     }
-})
+}, { timestamps: true });
 
 // sets up collection in database
 const Invoice = mongoose.model('Invoice', invoiceSchema);
