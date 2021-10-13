@@ -16,6 +16,7 @@ const db = mongoose.connection;
 // ============== Middleware ============== //
 app.use(express.json())
 app.use(cors())
+require('dotenv').config()
 app.use('/invoices', invoicesController)
 
 
@@ -25,9 +26,9 @@ const PORT = process.env.PORT || 3003;
 
 // ============== Database ============== //
 // connect via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI;
+const mongodbURI = process.env.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI , 
+mongoose.connect(mongodbURI , 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -38,7 +39,8 @@ mongoose.connect(MONGODB_URI ,
 
 // ============== Routes ============== //
 app.get('/', (req, res) => {
-    res.send('hello')
+    // res.send('hello')
+    res.redirect('/invoices')
 })
 
 

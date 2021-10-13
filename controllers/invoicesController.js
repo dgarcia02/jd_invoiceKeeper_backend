@@ -1,11 +1,11 @@
 const express = require('express')
-const router = express.Router()
+const invoices = express.Router()
 // grabbing the invoice model
-const Invoices = require('../models/invoices.js')
+const Invoice = require('../models/invoices.js')
 
 // =========== Routes =========== //
 // GET index
-router.get('/', (req, res) => {
+invoices.get('/', (req, res) => {
     res.send('index')
 })
 
@@ -19,8 +19,8 @@ router.get('/', (req, res) => {
 
 
 // =========== Seed Route =========== //
-router.get('/seed', (req, res) => {
-    Invoices.create(
+invoices.get('/seed', (req, res) => {
+    Invoice.create(
         [
             {
                 invoiceNumber: 001,
@@ -78,4 +78,4 @@ router.get('/seed', (req, res) => {
     )
 })
 
-module.exports = router;
+module.exports = invoices;
