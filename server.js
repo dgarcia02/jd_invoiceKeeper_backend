@@ -31,8 +31,7 @@ const mongodbURI = process.env.MONGODB_URI;
 mongoose.connect(mongodbURI , 
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false
+        useUnifiedTopology: true
     }
 )
 
@@ -46,7 +45,7 @@ app.get('/', (req, res) => {
 
 // ============== Connection Error/Success ============== //
 db.on('error', (err) => console.log(err.message + ' is mongod not running?'))
-db.on('connected', () => console.log('mongo connected: ', mongoURI))
+db.on('connected', () => console.log('mongo connected: ', mongodbURI))
 db.on('disconnected', () => console.log('mongo disconnected'))
 
 
