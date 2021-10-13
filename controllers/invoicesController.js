@@ -3,17 +3,22 @@ const router = express.Router()
 // grabbing the invoice model
 const Invoices = require('../models/invoices.js')
 
-// Routes
+// =========== Routes =========== //
 // GET index
 router.get('/', (req, res) => {
-    Invoices.find({}, (error, foundInvoices) => {
-        res.json(foundInvoices)
-    })
+    res.send('index')
 })
 
 
+// router.get('/', (req, res) => {
+//     Invoices.find({}, (error, foundInvoices) => {
+//         res.json(foundInvoices)
+//     })
+// })
 
-// Seed Route
+
+
+// =========== Seed Route =========== //
 router.get('/seed', (req, res) => {
     Invoices.create(
         [
@@ -72,3 +77,5 @@ router.get('/seed', (req, res) => {
         ]
     )
 })
+
+module.exports = router;
