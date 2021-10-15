@@ -59,6 +59,8 @@ const invoiceSchema = new Schema({
 }, { timestamps: true });
 
 // sets up collection in database
+// creates new collection to local
 const Invoice = mongoose.model('Invoice', invoiceSchema);
 
+// exporting to have access to the schema 
 module.exports = Invoice;
